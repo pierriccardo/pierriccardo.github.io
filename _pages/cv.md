@@ -11,30 +11,24 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.S. Computer Science & Engineering, politecnico di Milano (2015 - 2019)
+* M.S. Computer Science & Engineering, politecnico di Milano (2019 - Expected 2022)
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Full stack developer (March 2019 - September 2019) 
+  * Blucloud s.r.l.
+  * Develope new features for a web application, usign PHP, Javascript and Angular JS
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* C, C++ (good)
+* Rust (basic)
+* Java (good)
+* Python (advanced)
+* VHDL (basic)
+* Javascript (good)
+* PHP (basic)
 
 Publications
 ======
@@ -53,7 +47,15 @@ Teaching
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Service and leadership
+
+Certifications
 ======
-* Currently signed in to 43 different slack teams
+* TOEIC: English test with a B2 profiency
+* Touch 5G Experience: An orientation academy for professional future managers of 5G, organized by Wind3
+* ECDL: European Computer Driver License
+* PCB Design: PCB Design and Programming Course 
+
+Languages
+======
+* Italian: Native
+* English: B2
