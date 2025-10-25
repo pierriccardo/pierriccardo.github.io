@@ -1,0 +1,93 @@
+/* Base */
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#ffffff;
+  --fg:#0e1117;
+  --muted:#5f6b7a;
+  --accent: #47e1cf; /* bright orange #ff7a00 */
+  --line:#e6ebf2;
+  --w:86rem;
+  --rail:17rem;
+  --pad:clamp(1rem,.8rem + 1vw,1.3rem);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b0c11;
+    --fg:#e6eaf2;
+    --muted:#a2a8b6;
+    --accent:#47e1cf;
+    --line:#252a3a;
+  }
+}
+html:focus-within{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.75 ui-monospace,SFMono-Regular,Menlo,Monaco,"Cascadia Mono",
+       "Segoe UI Mono",Consolas,"Liberation Mono",monospace;
+  text-rendering:optimizeLegibility
+}
+a{color:var(--accent); text-underline-offset:.18em}
+em,strong,mark{color:var(--accent); background:none; font-style:inherit; font-weight:700}
+img{max-width:100%; height:auto; display:block}
+
+/* Header: name + inline nav */
+.wrap{max-width:var(--w); margin-inline:auto; padding:var(--pad)}
+header{border-bottom:1px solid var(--line)}
+.bar{display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap}
+.brand{display:flex; gap:.6rem; align-items:baseline}
+.brand h1{margin:0; font-size:clamp(1.2rem,1rem + 1.2vw,1.8rem)}
+nav a{margin-right:.9rem; white-space:nowrap}
+
+/* Layout */
+.grid{
+  display:grid; gap:clamp(1.1rem,1vw,1.6rem);
+  grid-template-columns: var(--rail) 1fr; align-items:start;
+}
+@media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+
+/* Sidebar */
+aside{position:sticky; top:0; align-self:start}
+/*.photo{
+  border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  width:9rem; aspect-ratio:3/4; background:#ddd;
+}*/
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 0.8rem;
+  width: 16rem;
+  aspect-ratio: 1;
+  border-radius: 50%; /* Circular for a more natural, professional look */
+  overflow: hidden;
+  /* Very minimal styling - let the photo be the focus */
+  border: 1px solid var(--line);
+  /* Subtle shadow that doesn't compete */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.name{margin:.6rem 0 .1rem; font-size:clamp(1.05rem,1rem + .6vw,1.3rem)}
+.role{margin:0 0 .6rem; color:var(--muted)}
+.links{display:grid; gap:.35rem; margin-top:.4rem}
+.link{display:inline-flex; align-items:center; gap:.45rem}
+.icon{width:16px; height:16px; display:inline-block; flex:0 0 16px; color:var(--accent)}
+
+/* Content */
+main{display:grid; gap:1.4rem}
+section{padding-top:.4rem}
+.sec-title{margin:1.1rem 0 .55rem; font-size:clamp(1.05rem,1rem + .5vw,1.35rem); color:var(--accent)}
+p,li,small{color:var(--muted); margin:0}
+p{margin-bottom:.85rem} /* Add spacing between paragraphs */
+.lead{color:var(--fg)}
+.lead a {text-decoration: underline;}
+hr{border:0; border-top:1px solid var(--line); margin:1.1rem 0}
+ul{padding-left:1.25rem}
+.news li{margin:.45rem 0}
+.pubs{list-style:decimal; padding-left:1.5rem}
+.pubs li{margin:.75rem 0}
+.pub-title{display:block; color:var(--fg); margin-bottom:.3rem}
+.pub-authors{color:var(--muted); margin-bottom:.2rem; font-size:.95em}
+.pub-venue{color:var(--accent); margin-bottom:.3rem; font-size:.9em; font-weight:500}
+.pub-links{margin-top:.3rem}
+.pub-links a{margin-right:.6rem; font-size:.9em}
+.meta a{margin-right:.6rem}
+footer{border-top:1px solid var(--line); margin-top:1.2rem; color:var(--muted)}
