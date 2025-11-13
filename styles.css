@@ -50,10 +50,11 @@ nav a{margin-right:.9rem; white-space:nowrap; font-size:clamp(0.85rem,0.8rem + 0
   display:grid; gap:clamp(1.1rem,1vw,1.6rem);
   grid-template-columns: var(--rail) 1fr; align-items:start;
 }
+.grid > * {min-width:0}
 @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
 
 /* Sidebar */
-aside{position:sticky; top:0; align-self:start}
+aside{position:sticky; top:0; align-self:start; overflow-wrap:break-word; word-wrap:break-word; max-width:100%; box-sizing:border-box}
 @media (max-width: 900px){
   aside{position:static}
 }
@@ -79,7 +80,7 @@ aside{position:sticky; top:0; align-self:start}
   .photo{width:12rem; margin:0 auto 1rem}
 }
 .name{margin:.6rem 0 .1rem; font-size:clamp(1.05rem,1rem + .6vw,1.3rem)}
-.role{margin:0 0 .6rem; color:var(--muted); font-size:0.85em}
+.role{margin:0 0 .6rem; color:var(--muted); font-size:0.85em; word-break:break-word; overflow-wrap:break-word; max-width:100%}
 .links{display:grid; gap:.35rem; margin-top:.4rem}
 .link{display:inline-flex; align-items:center; gap:.45rem}
 .icon{width:16px; height:16px; display:inline-block; flex:0 0 16px; color:var(--accent)}
