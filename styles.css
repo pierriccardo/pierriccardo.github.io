@@ -32,11 +32,18 @@ img{max-width:100%; height:auto; display:block}
 
 /* Header: name + inline nav */
 .wrap{max-width:var(--w); margin-inline:auto; padding:var(--pad)}
-header{border-bottom:1px solid var(--line)}
+header{border-bottom:1px solid var(--line); position:relative; z-index:10; background:var(--bg)}
 .bar{display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap}
-.brand{display:flex; gap:.6rem; align-items:baseline}
+.brand{display:flex; gap:.6rem; align-items:baseline; flex:1 1 auto; min-width:0}
 .brand h1{margin:0; font-size:clamp(1.2rem,1rem + 1.2vw,1.8rem)}
-nav a{margin-right:.9rem; white-space:nowrap}
+nav{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; flex:1 1 auto; justify-content:flex-end}
+nav a{margin-right:.9rem; white-space:nowrap; font-size:clamp(0.85rem,0.8rem + 0.3vw,1rem)}
+@media (max-width: 600px){
+  .bar{flex-direction:column; align-items:flex-start; gap:.8rem}
+  .brand{width:100%}
+  nav{width:100%; justify-content:flex-start; margin-top:0}
+  nav a{margin-right:1rem; margin-bottom:0}
+}
 
 /* Layout */
 .grid{
@@ -47,6 +54,9 @@ nav a{margin-right:.9rem; white-space:nowrap}
 
 /* Sidebar */
 aside{position:sticky; top:0; align-self:start}
+@media (max-width: 900px){
+  aside{position:static}
+}
 /*.photo{
   border:1px solid var(--line); border-radius:12px; overflow:hidden;
   width:9rem; aspect-ratio:3/4; background:#ddd;
@@ -65,15 +75,21 @@ aside{position:sticky; top:0; align-self:start}
   /* Subtle shadow that doesn't compete */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 900px){
+  .photo{width:12rem; margin:0 auto 1rem}
+}
 .name{margin:.6rem 0 .1rem; font-size:clamp(1.05rem,1rem + .6vw,1.3rem)}
-.role{margin:0 0 .6rem; color:var(--muted)}
+.role{margin:0 0 .6rem; color:var(--muted); font-size:0.85em}
 .links{display:grid; gap:.35rem; margin-top:.4rem}
 .link{display:inline-flex; align-items:center; gap:.45rem}
 .icon{width:16px; height:16px; display:inline-block; flex:0 0 16px; color:var(--accent)}
 
 /* Content */
-main{display:grid; gap:1.4rem}
+main{display:grid; gap:1.4rem; padding-top:0}
 section{padding-top:.4rem}
+@media (max-width: 600px){
+  main{padding-top:1rem}
+}
 .sec-title{margin:1.1rem 0 .55rem; font-size:clamp(1.05rem,1rem + .5vw,1.35rem); color:var(--accent)}
 p,li,small{color:var(--muted); margin:0}
 p{margin-bottom:.85rem} /* Add spacing between paragraphs */
@@ -84,6 +100,7 @@ ul{padding-left:1.25rem}
 .news li{margin:.45rem 0}
 .pubs{list-style:decimal; padding-left:1.5rem}
 .pubs li{margin:.75rem 0}
+.pub-subsection{margin:1.5rem 0 .8rem; font-size:clamp(0.95rem,0.9rem + .4vw,1.15rem); color:var(--accent); font-weight:600}
 .pub-title{display:block; color:var(--fg); margin-bottom:.3rem}
 .pub-authors{color:var(--muted); margin-bottom:.2rem; font-size:.95em}
 .pub-venue{color:var(--accent); margin-bottom:.3rem; font-size:.9em; font-weight:500}
