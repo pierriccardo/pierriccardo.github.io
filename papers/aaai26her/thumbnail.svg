@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" viewBox="22 10 768 318" role="img" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif">
+<title>LTLfMT pipeline with HER and CRM</title>
+<desc>An LTLfMT two-goal formula is compiled into a reward machine, which is folded into the product MDP. An agent interacts with the product MDP; rollouts populate two overlapping replay buffers (CRM and HER) that share transitions and jointly update the agent.</desc>
+
+<style>
+  text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+  .ts { font-size: 12px; }
+  .th { font-size: 14px; font-weight: 500; }
+  .mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+</style>
+
+<defs>
+<marker id="ars" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+
+<!-- header: LTLfMT formula -->
+<text x="430" y="30" text-anchor="middle" class="mono" font-size="17" fill="#0F4751">φ  =  ◇ ( <tspan fill="#B85C3C" font-weight="500">‖x − g₁‖² ≤ ε</tspan>  ∧  ◇ <tspan fill="#D49A2E" font-weight="500">‖x − g₂‖² ≤ ε</tspan> )</text>
+<text x="430" y="49" text-anchor="middle" class="ts" fill="#1F6E7A">reach goal g₁, then reach goal g₂</text>
+
+<!-- formula -> reward machine -->
+<path d="M 215 48 Q 195 54 172 66" fill="none" stroke="#1F6E7A" stroke-width="1" marker-end="url(#ars)"/>
+
+<!-- STAGE 1: reward machine (DFA) -->
+<circle cx="60" cy="110" r="18" fill="#E8F1F2" stroke="#1F6E7A" stroke-width="1.2"/>
+<text class="th" x="60" y="115" text-anchor="middle" fill="#0F4751">q₀</text>
+
+<circle cx="160" cy="110" r="18" fill="#B8D6DA" stroke="#1F6E7A" stroke-width="1.2"/>
+<text class="th" x="160" y="115" text-anchor="middle" fill="#0F4751">q₁</text>
+
+<circle cx="260" cy="110" r="18" fill="#5BA0AC" stroke="#0F4751" stroke-width="1.5"/>
+<circle cx="260" cy="110" r="13.5" fill="none" stroke="#0F4751" stroke-width="1"/>
+<text class="th" x="260" y="115" text-anchor="middle" fill="#082B32">q₂</text>
+
+<path d="M 78 110 L 142 110" fill="none" stroke="#B85C3C" stroke-width="1.4" marker-end="url(#ars)"/>
+<text class="ts" x="110" y="98" text-anchor="middle" fill="#8A3F26">reach g₁</text>
+
+<path d="M 178 110 L 242 110" fill="none" stroke="#D49A2E" stroke-width="1.4" marker-end="url(#ars)"/>
+<text class="ts" x="210" y="98" text-anchor="middle" fill="#A0721C">reach g₂</text>
+
+<path d="M 48 94 Q 38 76 60 72 Q 82 76 72 94" fill="none" stroke="#1F6E7A" stroke-width="1" marker-end="url(#ars)"/>
+<path d="M 148 94 Q 138 76 160 72 Q 182 76 172 94" fill="none" stroke="#1F6E7A" stroke-width="1" marker-end="url(#ars)"/>
+
+<text class="ts" x="160" y="154" text-anchor="middle" fill="#1F6E7A">reward machine</text>
+
+<!-- reward machine -> product MDP block (flexible curve) -->
+<path d="M 290 135 Q 318 152 340 168" fill="none" stroke="#1F6E7A" stroke-width="1.4" marker-end="url(#ars)"/>
+
+<!-- STAGE 2: agent + product MDP -->
+<text class="ts" x="275" y="198" text-anchor="middle" fill="#7A3320">agent</text>
+<circle cx="275" cy="235" r="25" fill="#F5E4DC" stroke="#A04825" stroke-width="1.2"/>
+<text x="275" y="235" text-anchor="middle" dominant-baseline="central" fill="#5C2614" font-size="22" font-style="italic" font-family="ui-serif, Georgia, serif">π</text>
+
+<rect x="340" y="140" width="240" height="150" rx="12" fill="#E8F1F2" stroke="#1F6E7A" stroke-width="1"/>
+<text class="th" x="460" y="162" text-anchor="middle" fill="#0F4751">product MDP   ·   env × RM</text>
+
+<polygon points="380,200 520,200 540,190 400,190" fill="#B8D6DA" stroke="#0F4751" stroke-width="0.7"/>
+<text class="ts" x="548" y="198" fill="#0F4751">q₂</text>
+<circle cx="400" cy="194" r="2.5" fill="#0F4751"/>
+<circle cx="440" cy="194" r="2.5" fill="#0F4751"/>
+<circle cx="480" cy="194" r="2.5" fill="#0F4751"/>
+<circle cx="515" cy="194" r="2.5" fill="#0F4751"/>
+
+<polygon points="380,228 520,228 540,218 400,218" fill="#8FBEC6" stroke="#0F4751" stroke-width="0.7"/>
+<text class="ts" x="548" y="226" fill="#0F4751">q₁</text>
+<circle cx="400" cy="222" r="2.5" fill="#082B32"/>
+<circle cx="440" cy="222" r="2.5" fill="#082B32"/>
+<circle cx="480" cy="222" r="2.5" fill="#082B32"/>
+<circle cx="515" cy="222" r="2.5" fill="#082B32"/>
+
+<polygon points="380,256 520,256 540,246 400,246" fill="#5BA0AC" stroke="#0F4751" stroke-width="0.7"/>
+<text class="ts" x="548" y="254" fill="#0F4751">q₀</text>
+<circle cx="400" cy="250" r="2.5" fill="#082B32"/>
+<circle cx="440" cy="250" r="2.5" fill="#082B32"/>
+<circle cx="480" cy="250" r="2.5" fill="#082B32"/>
+<circle cx="515" cy="250" r="2.5" fill="#082B32"/>
+
+<path d="M 400 250 L 440 250 L 480 250 L 480 222 L 515 222 L 515 194" fill="none" stroke="#D49A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="400" cy="250" r="3.5" fill="#D49A2E"/>
+<circle cx="515" cy="194" r="3.5" fill="#D49A2E"/>
+
+<path d="M 300 222 L 338 210" fill="none" stroke="#A04825" stroke-width="1.2" marker-end="url(#ars)"/>
+<text class="ts" x="320" y="206" text-anchor="middle" fill="#7A3320">a</text>
+
+<path d="M 338 250 L 300 240" fill="none" stroke="#1F6E7A" stroke-width="1.2" marker-end="url(#ars)"/>
+<text class="ts" x="319" y="264" text-anchor="middle" fill="#0F4751">s, q, r</text>
+
+<!-- product MDP -> replay buffers -->
+<path d="M 582 215 L 616 215" fill="none" stroke="#A04825" stroke-width="1.2" marker-end="url(#ars)"/>
+
+<!-- STAGE 3: replay buffers -->
+<circle cx="668" cy="215" r="46" fill="#F5E4DC" stroke="#A04825" stroke-width="1.2" opacity="0.85"/>
+<circle cx="730" cy="215" r="46" fill="#E5BFA8" stroke="#7A3320" stroke-width="1.2" opacity="0.78"/>
+
+<text class="th" x="642" y="158" text-anchor="middle" fill="#5C2614">CRM</text>
+<text class="th" x="756" y="158" text-anchor="middle" fill="#5C2614">HER</text>
+
+<circle cx="650" cy="200" r="2.4" fill="#A04825"/>
+<circle cx="642" cy="218" r="2.4" fill="#A04825"/>
+<circle cx="654" cy="234" r="2.4" fill="#A04825"/>
+<circle cx="640" cy="236" r="2.4" fill="#A04825"/>
+<circle cx="648" cy="210" r="2.4" fill="#A04825"/>
+
+<circle cx="748" cy="200" r="2.4" fill="#7A3320"/>
+<circle cx="758" cy="218" r="2.4" fill="#7A3320"/>
+<circle cx="752" cy="236" r="2.4" fill="#7A3320"/>
+<circle cx="762" cy="206" r="2.4" fill="#7A3320"/>
+<circle cx="756" cy="232" r="2.4" fill="#7A3320"/>
+
+<circle cx="692" cy="204" r="2.4" fill="#4A1A08"/>
+<circle cx="704" cy="220" r="2.4" fill="#4A1A08"/>
+<circle cx="696" cy="234" r="2.4" fill="#4A1A08"/>
+<circle cx="708" cy="202" r="2.4" fill="#4A1A08"/>
+
+<!-- policy update loop -->
+<path d="M 700 262 Q 700 320 440 320 Q 275 320 275 262" fill="none" stroke="#A04825" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ars)"/>
+<text class="ts" x="440" y="312" text-anchor="middle" fill="#7A3320" font-style="italic">policy update</text>
+</svg>

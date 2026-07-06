@@ -1,23 +1,14 @@
 /* Base */
 *,*::before,*::after{box-sizing:border-box}
 :root{
-  --bg:#ffffff;
-  --fg:#0e1117;
-  --muted:#5f6b7a;
-  --accent: #47e1cf; /* bright orange #ff7a00 */
-  --line:#e6ebf2;
+  --bg:#0b0c11;
+  --fg:#e6eaf2;
+  --muted:#a2a8b6;
+  --accent:#47e1cf;
+  --line:#252a3a;
   --w:86rem;
   --rail:17rem;
   --pad:clamp(1rem,.8rem + 1vw,1.3rem);
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#0b0c11;
-    --fg:#e6eaf2;
-    --muted:#a2a8b6;
-    --accent:#47e1cf;
-    --line:#252a3a;
-  }
 }
 html:focus-within{scroll-behavior:smooth}
 body{
